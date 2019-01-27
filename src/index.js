@@ -1,6 +1,6 @@
 import { renderTodos, generateSummaryDom, generateTodoDOM } from "./views"
 import { setFilters } from "./filters"
-import { createTodo } from "./todos"
+import { createTodo, loadTodos } from "./todos"
 renderTodos();
 
 document.querySelector("#searchTodos").addEventListener("input", e => {
