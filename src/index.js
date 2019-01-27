@@ -27,7 +27,7 @@ document.querySelector("#hideCompleted").addEventListener("change", e => {
     renderTodos();
 });
 
-window.addEventListener("storage", () => {
+window.addEventListener("storage", (e) => {
     if (e.key === "todos") {
         loadTodos()
         renderTodos()
