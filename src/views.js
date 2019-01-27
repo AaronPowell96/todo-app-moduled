@@ -1,8 +1,11 @@
+import { getTodos, toggleTodo, removeTodo } from "./todos"
+import { getFilters } from "./filters"
 //render todos
 
-const renderTodos = (todos, filters) => {
+const renderTodos = () => {
     const todoEl = document.querySelector("#todoItems");
-    const filteredTodos = todos.filter(todo => {
+    const filters = getFilters()
+    const filteredTodos = getTodos().filter(todo => {
         const searchTextMatch = todo.text
             .toLowerCase()
             .includes(filters.searchText.toLowerCase());
@@ -43,9 +46,8 @@ const generateTodoDOM = item => {
     containerEl.appendChild(checkbox);
     checkbox.checked = item.completed;
     checkbox.addEventListener("change", () => {
-        item.completed = !item.completed;
-        saveTodos();
-        renderTodos(todos, filters);
+        toggleTodo(item.id);
+        renderTodos();
     });
     //setup todo text
     todoText.textContent = item.text;
@@ -60,9 +62,8 @@ const generateTodoDOM = item => {
     removeButton.classList.add("button", "button--text");
     todoEl.appendChild(removeButton);
     removeButton.addEventListener("click", () => {
-        removeTodos(item.id);
-        saveTodos();
-        renderTodos(todos, filters);
+        removeTodo(item.id);
+        renderTodos();
     });
 
     return todoEl;
@@ -77,3 +78,5 @@ const generateSummaryDom = incompleteTodos => {
 
     return summary;
 };
+
+export { generateTodoDOM, renderTodos, generateSummaryDom }
