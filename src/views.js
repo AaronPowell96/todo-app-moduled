@@ -49,7 +49,7 @@ const generateTodoDOM = item => {
         toggleTodo(item.id);
         renderTodos();
     });
-    //setup todo text
+    //setup todos text
     todoText.textContent = item.text;
     containerEl.appendChild(todoText);
 
