@@ -2,7 +2,7 @@ import { getFilters } from "./filters"
 import uuidv4 from "uuid/v4"
 let todos = []
 
-//get saved todos from local storage
+//get saved todos from local storage.
 const loadTodos = () => {
     const todosJSON = localStorage.getItem("todos");
     todos = todosJSON !== null ? JSON.parse(todosJSON) : [];
