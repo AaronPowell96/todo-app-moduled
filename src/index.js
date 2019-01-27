@@ -26,3 +26,10 @@ document.querySelector("#hideCompleted").addEventListener("change", e => {
     })
     renderTodos();
 });
+
+window.addEventListener("storage", () => {
+    if (e.key === "todos") {
+        loadTodos()
+        renderTodos()
+    }
+})
